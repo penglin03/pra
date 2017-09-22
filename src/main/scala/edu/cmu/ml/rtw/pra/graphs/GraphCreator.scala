@@ -61,10 +61,10 @@ class GraphCreator(
   override val inputs: Set[(String, Option[Step])] = (inputRelationFiles ++ inputAliasFiles).map((_, None)).toSet
 
   val deduplicateEdges = JsonHelper.extractWithDefault(params, "deduplicate edges", false)
-  val outputBinaryFile = JsonHelper.extractWithDefault(params, "output binary file", true)
-  val outputPlainTextFile = JsonHelper.extractWithDefault(params, "output plain text file", false)
-  val shouldShardGraph = JsonHelper.extractWithDefault(params, "shard plain text graph", false)
-  val outputMatrices = JsonHelper.extractWithDefault(params, "output matrices", false)
+  val outputBinaryFile = JsonHelper.extractWithDefault(params, "output binary file", false)
+  val outputPlainTextFile = JsonHelper.extractWithDefault(params, "output plain text file", true)
+  val shouldShardGraph = JsonHelper.extractWithDefault(params, "shard plain text graph", true)
+  val outputMatrices = JsonHelper.extractWithDefault(params, "output matrices", true)
   val maxMatrixFileSize = JsonHelper.extractWithDefault(params, "max matrix file size", 100000)
 
   val matrixOutDir = outdir + "matrices/"

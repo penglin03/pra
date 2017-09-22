@@ -69,7 +69,9 @@ public class RandomWalkPathFollower implements PathFollower, WalkUpdateFunction<
     this.instances = instances;
     sourcesMap = Maps.newHashMap();
     for (NodePairInstance instance : instances) {
-      MapUtil.addValueToKeySet(sourcesMap, instance.source(), instance.target());
+      if (instance.isInGraph()) {
+        MapUtil.addValueToKeySet(sourcesMap, instance.source(), instance.target());
+      }
     }
     try {
       this.drunkardMobEngine = new DrunkardMobEngine<EmptyType, Integer>(
